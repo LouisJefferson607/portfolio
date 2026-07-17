@@ -667,6 +667,40 @@
   window.addEventListener("scroll", onScroll, {passive:true});
   window.addEventListener("resize", onScroll, {passive:true});
   frame();
+
+  /* ---- lerped momentum smooth-scroll (wheel/trackpad only) ----
+     Touch, keyboard, scrollbar and anchor clicks stay native and re-sync to it.
+     scrollTo uses behavior:"instant" to override the CSS scroll-behavior:smooth. */
+  if (!reduceMotion) {
+    var sCur = window.pageYOffset, sTarget = sCur, sLastSet = Math.round(sCur), sAnimating = false;
+    function sMax(){ return document.documentElement.scrollHeight - window.innerHeight; }
+    function sStep(){
+      var diff = sTarget - sCur;
+      if (Math.abs(diff) > 0.2) {
+        sCur += diff * 0.09;
+        sLastSet = Math.round(sCur);
+        window.scrollTo({ top: sCur, behavior: "instant" });
+        requestAnimationFrame(sStep);
+      } else {
+        sCur = sTarget; sLastSet = Math.round(sCur);
+        window.scrollTo({ top: sCur, behavior: "instant" });
+        sAnimating = false;
+      }
+    }
+    window.addEventListener("wheel", function(e){
+      if (e.ctrlKey) return;                 // let pinch-zoom pass through
+      e.preventDefault();
+      var d = e.deltaMode === 1 ? e.deltaY * 16
+            : e.deltaMode === 2 ? e.deltaY * window.innerHeight
+            : e.deltaY;
+      sTarget = Math.max(0, Math.min(sMax(), sTarget + d));
+      if (!sAnimating) { sAnimating = true; sCur = window.pageYOffset; requestAnimationFrame(sStep); }
+    }, { passive: false });
+    window.addEventListener("scroll", function(){
+      // page moved by something other than our lerp (anchor jump, keys, scrollbar) -> follow it
+      if (Math.abs(window.pageYOffset - sLastSet) > 2) { sCur = sTarget = window.pageYOffset; sLastSet = Math.round(sCur); }
+    }, { passive: true });
+  }
 })();
 </script>
 </body>
