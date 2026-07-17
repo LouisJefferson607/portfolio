@@ -80,6 +80,39 @@
   @media (max-width:900px){.stills-grid{column-count:2}}
   @media (max-width:520px){.stills-grid{column-count:1}}
 
+  /* scene index (bottom scrubber) */
+  #sceneline{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;align-items:center;gap:16px;height:42px;padding:0 18px;background:rgba(11,11,12,0.85);backdrop-filter:blur(8px);border-top:1px solid rgba(234,231,226,0.14);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;user-select:none}
+  #sceneline .tc{color:var(--accent);min-width:96px}
+  #sceneline .track{position:relative;flex:1;align-self:stretch;display:flex;cursor:pointer;touch-action:none}
+  #sceneline .seg{position:relative;display:flex;align-items:center;overflow:hidden;border-left:1px solid rgba(234,231,226,0.14)}
+  #sceneline .seg:first-child{border-left:0}
+  #sceneline .seg span{padding:0 8px;white-space:nowrap;color:rgba(234,231,226,0.35);transition:color .25s;pointer-events:none}
+  #sceneline .seg.on span{color:rgba(234,231,226,0.9)}
+  #sceneline .seg:hover span{color:var(--accent)}
+  #sceneline .ph{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);pointer-events:none}
+  #sceneline .ph::after{content:"";position:absolute;top:0;left:-3px;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--accent)}
+  #sceneline .cur{color:rgba(234,231,226,0.55);min-width:180px;text-align:right}
+  @media (min-width:761px){body{padding-bottom:42px}}
+  @media (max-width:760px){#sceneline{display:none}}
+
+  /* theater mode */
+  body.theater-open{overflow:hidden}
+  #theater{position:fixed;inset:0;z-index:140;display:none}
+  #theater.open{display:block}
+  #theater .tbackdrop{position:absolute;inset:0;background:rgba(5,5,6,0.96);opacity:0;transition:opacity .4s ease}
+  #theater.in .tbackdrop{opacity:1}
+  #theater .tbar{position:absolute;left:0;right:0;height:10vh;min-height:64px;background:#000;z-index:2;transition:transform .55s cubic-bezier(0.7,0,0.3,1);display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.75)}
+  #theater .tbar.top{top:0;transform:translateY(-101%)}
+  #theater .tbar.bot{bottom:0;transform:translateY(101%)}
+  #theater.in .tbar{transform:translateY(0)}
+  #theater .tclose{cursor:pointer;background:none;border:1px solid rgba(234,231,226,0.35);color:#eae7e2;padding:8px 14px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;transition:border-color .25s,color .25s}
+  #theater .tclose:hover{border-color:var(--accent);color:var(--accent)}
+  #theater .tdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:10px;animation:pulse 1.6s ease-in-out infinite;vertical-align:1px}
+  #theater .tstage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+  #theater .tframe{width:min(92vw,1500px,128vh);aspect-ratio:16/9;background:#000;opacity:0;transform:scale(0.96);transition:opacity .5s ease .15s,transform .5s cubic-bezier(0.16,1,0.3,1) .15s;box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+  #theater.in .tframe{opacity:1;transform:scale(1)}
+  #theater .tframe iframe{width:100%;height:100%;border:0;display:block}
+
   @media (max-width:760px){
     nav{padding:18px 22px !important}
     nav .navlinks{gap:20px !important}
@@ -562,6 +595,14 @@
   </div>
 </section>
 
+<!-- theater mode overlay -->
+<div id="theater" aria-hidden="true">
+  <div class="tbackdrop"></div>
+  <div class="tbar top"><span><span class="tdot"></span>NOW SCREENING</span><button class="tclose" type="button">CLOSE ✕&nbsp;&nbsp;ESC</button></div>
+  <div class="tstage"><div class="tframe"></div></div>
+  <div class="tbar bot"><span id="theaterTitle"></span><span>LOUIS JEFFERSON · PORTFOLIO</span></div>
+</div>
+
 <!-- film grain -->
 <div style="position:fixed;inset:-50px;z-index:-1;pointer-events:none;opacity:0.35;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E&quot;);animation:grainshift 0.7s steps(1) infinite"></div>
 
@@ -606,32 +647,48 @@
     reveals.forEach(function(el){ el.classList.add("in"); });
   }
 
+  /* ---- theater mode ---- */
+  var theaterEl = document.getElementById("theater");
+  var theaterFrame = theaterEl.querySelector(".tframe");
+  var theaterTitle = document.getElementById("theaterTitle");
+  var theaterOpen = false;
+  function openTheater(id, title){
+    theaterTitle.textContent = title || "";
+    theaterFrame.innerHTML =
+      '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" ' +
+      'title="' + (title || "video") + '" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>';
+    theaterEl.classList.add("open");
+    document.body.classList.add("theater-open");
+    theaterOpen = true;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ theaterEl.classList.add("in"); }); });
+  }
+  function closeTheater(){
+    theaterEl.classList.remove("in");
+    theaterFrame.innerHTML = "";           /* stop playback immediately */
+    document.body.classList.remove("theater-open");
+    theaterOpen = false;
+    setTimeout(function(){ theaterEl.classList.remove("open"); }, 560);
+  }
+  theaterEl.querySelector(".tclose").addEventListener("click", closeTheater);
+  theaterEl.querySelector(".tbackdrop").addEventListener("click", closeTheater);
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && theaterOpen) closeTheater(); });
+
   /* ---- reel play ---- */
   var playReel = document.getElementById("playReel");
   if (playReel) {
     playReel.addEventListener("click", function(){
-      var wrap = document.getElementById("reelWrap");
-      wrap.innerHTML =
-        '<iframe src="https://www.youtube.com/embed/40EpqI-DsK8?autoplay=1&rel=0" ' +
-        'title="Ahipara footage reel" allow="autoplay; fullscreen; encrypted-media" allowfullscreen ' +
-        'style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000"></iframe>';
+      openTheater("40EpqI-DsK8", "AHIPARA SHOWREEL · 01:32");
     });
   }
 
-  /* ---- click to play work videos inline (with sound + controls) ---- */
+  /* ---- click to play work videos (opens theater) ---- */
   document.querySelectorAll(".workmedia[data-video]").forEach(function(media){
     media.setAttribute("role", "button");
     media.setAttribute("tabindex", "0");
     media.setAttribute("aria-label", "Play video");
-    function play(){
-      if (media.classList.contains("playing")) return;
-      var id = media.getAttribute("data-video");
-      media.classList.add("playing");
-      media.innerHTML =
-        '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" ' +
-        'title="video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen ' +
-        'style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000"></iframe>';
-    }
+    var card = media.closest(".workcard");
+    var title = card && card.querySelector("h3") ? card.querySelector("h3").textContent : "";
+    function play(){ openTheater(media.getAttribute("data-video"), title); }
     media.addEventListener("click", play);
     media.addEventListener("keydown", function(e){
       if (e.key === "Enter" || e.key === " "){ e.preventDefault(); play(); }
@@ -660,6 +717,7 @@
       if (end > 0) end = 0;
       strip.style.transform = "translateX(" + (end * frac) + "px)";
     }
+    updateSceneline(y, max);
   }
   function onScroll(){
     if (!ticking){ ticking = true; window.requestAnimationFrame(frame); }
@@ -689,6 +747,7 @@
     }
     window.addEventListener("wheel", function(e){
       if (e.ctrlKey) return;                 // let pinch-zoom pass through
+      if (theaterOpen) return;               // page is locked while screening
       e.preventDefault();
       var d = e.deltaMode === 1 ? e.deltaY * 16
             : e.deltaMode === 2 ? e.deltaY * window.innerHeight
@@ -701,6 +760,90 @@
       if (Math.abs(window.pageYOffset - sLastSet) > 2) { sCur = sTarget = window.pageYOffset; sLastSet = Math.round(sCur); }
     }, { passive: true });
   }
+
+  /* ---- scene index: a director's scene list along the bottom, scrubbable ---- */
+  var sceneDefs = [
+    ["01 OPENING",        document.querySelector("header")],
+    ["02 CASE STUDY",     document.getElementById("case-study")],
+    ["03 SELECTED WORK",  document.getElementById("work")],
+    ["04 STILLS",         document.getElementById("photos")],
+    ["05 ABOUT",          document.getElementById("about")],
+    ["06 CONTACT",        document.getElementById("contact")]
+  ].filter(function(s){ return s[1]; });
+
+  var line = document.createElement("div");
+  line.id = "sceneline";
+  line.setAttribute("aria-hidden", "true");
+  line.innerHTML = '<span class="tc">TC 00:00:00</span><div class="track"><div class="ph"></div></div><span class="cur"></span>';
+  document.body.appendChild(line);
+  var track = line.querySelector(".track"), ph = line.querySelector(".ph"),
+      tcEl = line.querySelector(".tc"), curEl = line.querySelector(".cur");
+  var segEls = [], bounds = [];
+
+  sceneDefs.forEach(function(s){
+    var d = document.createElement("div");
+    d.className = "seg";
+    d.innerHTML = "<span>" + s[0] + "</span>";
+    track.insertBefore(d, ph);
+    segEls.push(d);
+  });
+
+  function scrollMax(){ return document.documentElement.scrollHeight - window.innerHeight; }
+  function layoutSceneline(){
+    var max = scrollMax();
+    bounds = sceneDefs.map(function(s, i){ return i === 0 ? 0 : Math.min(s[1].offsetTop / max, 1); });
+    /* guarantee every scene a readable slice (walk backwards, min 5% each) */
+    for (var i = bounds.length - 1; i > 0; i--) {
+      var ceiling = (i === bounds.length - 1 ? 1 : bounds[i + 1]) - 0.05;
+      if (bounds[i] > ceiling) bounds[i] = Math.max(ceiling, 0.05 * i);
+    }
+    segEls.forEach(function(d, i){
+      var a = bounds[i], b = i + 1 < bounds.length ? bounds[i + 1] : 1;
+      d.style.width = ((b - a) * 100) + "%";
+    });
+  }
+  layoutSceneline();
+  window.addEventListener("resize", layoutSceneline);
+  window.addEventListener("load", layoutSceneline);
+  if ("ResizeObserver" in window) new ResizeObserver(layoutSceneline).observe(document.body);
+
+  var FPS = 24, RUNTIME = 126; /* the "feature" runs 2m06s */
+  function updateSceneline(y, max){
+    if (!ph || !bounds.length) return;
+    var frac = max > 0 ? Math.min(y / max, 1) : 0;
+    ph.style.left = (frac * 100) + "%";
+    var total = Math.round(frac * RUNTIME * FPS);
+    var ss = Math.floor(total / FPS), ff = total % FPS;
+    var mm = Math.floor(ss / 60); ss = ss % 60;
+    function p(n){ return (n < 10 ? "0" : "") + n; }
+    tcEl.textContent = "TC " + p(mm) + ":" + p(ss) + ":" + p(ff);
+    var idx = 0;
+    for (var i = 0; i < bounds.length; i++) if (frac >= bounds[i] - 0.0005) idx = i;
+    segEls.forEach(function(d, i){ d.classList.toggle("on", i === idx); });
+    curEl.textContent = "SCENE " + sceneDefs[idx][0].replace(" ", " · ");
+  }
+
+  /* scrub: drag the track to shuttle the page; click to jump */
+  var slDragging = false, slMoved = false, slDownX = 0;
+  function trackFrac(clientX){
+    var r = track.getBoundingClientRect();
+    return Math.min(Math.max((clientX - r.left) / r.width, 0), 1);
+  }
+  track.addEventListener("pointerdown", function(e){
+    slDragging = true; slMoved = false; slDownX = e.clientX;
+    track.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  track.addEventListener("pointermove", function(e){
+    if (!slDragging) return;
+    if (Math.abs(e.clientX - slDownX) > 3) slMoved = true;
+    if (slMoved) window.scrollTo({ top: trackFrac(e.clientX) * scrollMax(), behavior: "instant" });
+  });
+  track.addEventListener("pointerup", function(e){
+    slDragging = false;
+    if (!slMoved) window.scrollTo({ top: trackFrac(e.clientX) * scrollMax(), behavior: "smooth" });
+  });
+  updateSceneline(window.pageYOffset, scrollMax());
 })();
 </script>
 </body>
