@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Louis Jefferson · Creative Direction / Content / Shoot &amp; Edit</title>
+<meta name="description" content="Louis Jefferson: Gold Coast creative director and videographer. Ideas, scripts, shooting and editing, end to end for Explorations by Norwegian, 9News, Gold Coast SUNS and Ahipara.">
+<link rel="canonical" href="https://louisjefferson.com/">
+<meta property="og:title" content="Louis Jefferson · Portfolio 2026">
+<meta property="og:description" content="Creative direction, content strategy, shoot &amp; edit, end to end. Gold Coast, Australia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://louisjefferson.com/">
+<meta property="og:image" content="https://louisjefferson.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://louisjefferson.com/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --accent:#ff4400; --bg:#0b0b0c; --fg:#eae7e2; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:var(--fg);text-decoration:none;transition:color .25s}
+  a:hover{color:var(--accent)}
+  h1,h2,h3,p{margin:0}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--accent);color:var(--bg)}
+
+  @keyframes rise{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeup{from{opacity:0;transform:translateY(56px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes marqueeRev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+  @keyframes barOpen{to{transform:scaleY(0)}}
+  @keyframes fadeOut{to{opacity:0}}
+  @keyframes grainshift{0%{background-position:0 0}25%{background-position:-140px 80px}50%{background-position:90px -160px}75%{background-position:-70px -90px}100%{background-position:0 0}}
+
+  /* scroll reveals (IntersectionObserver toggles .in) */
+  .reveal{opacity:0;transform:translateY(52px);transition:opacity 1.05s cubic-bezier(.16,1,.3,1),transform 1.05s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none}
+    *{animation-duration:.001ms !important;animation-delay:0ms !important}
+  }
+
+  /* hover utilities (replacing the design's style-hover) */
+  .grayhover{filter:grayscale(1);transition:filter .6s}
+  .grayhover:hover{filter:grayscale(0)}
+  .caprow{transition:padding-left .3s}
+  .caprow:hover{padding-left:20px}
+  .playbtn{transition:transform .3s}
+  .playbtn:hover{transform:scale(1.08)}
+  .cta-primary{transition:background .25s,transform .25s,box-shadow .25s}
+  .cta-primary:hover{background:var(--accent);color:#141311;transform:translate(3px,3px);box-shadow:0 0 0 var(--accent)}
+  .cta-ghost{transition:border-color .25s}
+  .cta-ghost:hover{border-color:#141311}
+
+  /* click-to-play video cards */
+  .workmedia[data-video]{cursor:pointer}
+  .playoverlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2}
+  .playoverlay .ring{width:88px;height:88px;border-radius:50%;border:1px solid rgba(234,231,226,.85);background:rgba(11,11,12,.28);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+  .workmedia[data-video]:hover .playoverlay .ring{transform:scale(1.08);background:rgba(11,11,12,.12)}
+  .playoverlay .tri{width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid var(--accent);margin-left:5px}
+  .workmedia.playing .playoverlay{display:none}
+
+  /* placeholder tiles for imagery not yet supplied */
+  .ph{position:relative;overflow:hidden;background:#121215;display:flex;align-items:center;justify-content:center}
+  .ph::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(234,231,226,.035) 0 2px,transparent 2px 11px)}
+  .ph span{position:relative;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.22em;color:rgba(234,231,226,.32);text-align:center;padding:0 14px}
+
+  .logostrip img{filter:brightness(0) invert(1);opacity:.6;margin-right:80px;width:auto}
+
+  /* stills gallery · masonry */
+  .stills-grid{column-count:3;column-gap:14px}
+  .stills-grid figure{margin:0 0 14px;break-inside:avoid;overflow:hidden;line-height:0;cursor:zoom-in}
+  .stills-grid img{width:100%;height:auto;display:block}
+  @media (max-width:900px){.stills-grid{column-count:2}}
+  @media (max-width:520px){.stills-grid{column-count:1}}
+
+  @media (max-width:760px){
+    nav{padding:18px 22px !important}
+    nav .navlinks{gap:20px !important}
+    header,section{padding-left:22px !important;padding-right:22px !important}
+    .about-grid{grid-template-columns:1fr !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- scroll progress -->
+<div style="position:fixed;top:0;left:0;right:0;height:2px;z-index:100;background:rgba(234,231,226,0.08)">
+  <div id="progressBar" style="height:100%;background:var(--accent);transform-origin:left;transform:scaleX(0)"></div>
+</div>
+
+<!-- intro overlay -->
+<div id="intro" style="position:fixed;inset:0;z-index:150;pointer-events:none">
+  <div style="position:absolute;left:0;right:0;top:0;height:50%;background:#050505;transform-origin:top;animation:barOpen 0.9s cubic-bezier(0.7,0,0.3,1) 1.6s forwards"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:50%;background:#050505;transform-origin:bottom;animation:barOpen 0.9s cubic-bezier(0.7,0,0.3,1) 1.6s forwards"></div>
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;animation:fadeOut 0.4s ease 1.3s forwards;font-family:'Space Mono',monospace;letter-spacing:0.22em;font-size:12px;color:rgba(234,231,226,0.85)">
+    <div style="width:68px;height:68px;border-radius:50%;border:1px solid rgba(234,231,226,0.5);display:flex;align-items:center;justify-content:center;font-family:Anton,sans-serif;font-size:22px;letter-spacing:0.04em">LJ</div>
+    <div>LOUIS JEFFERSON · PORTFOLIO 2026</div>
+    <div style="color:var(--accent)">SCENE 01 · TAKE 01</div>
+  </div>
+</div>
+
+<!-- nav -->
+<nav style="position:fixed;top:2px;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:22px 44px;mix-blend-mode:difference;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em">
+  <a href="#" style="font-weight:700;font-size:13px;letter-spacing:0.06em">LJ©26</a>
+  <div class="navlinks" style="display:flex;gap:36px">
+    <a href="#work">WORK</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite"></span>
+    <span>OPEN TO WORK</span>
+  </div>
+</nav>
+
+<!-- hero (monument) -->
+<header style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 44px 70px">
+  <div style="position:absolute;top:84px;left:44px;right:44px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">
+    <span>PORTFOLIO · 2026</span>
+    <span>GOLD COAST, AUSTRALIA</span>
+  </div>
+  <div style="text-align:center;perspective:1200px">
+    <div id="nameEl" style="will-change:transform">
+      <div style="overflow:hidden">
+        <div style="font-family:Anton,sans-serif;font-size:clamp(88px,15vw,230px);line-height:0.92;letter-spacing:0.005em;animation:rise 1.1s cubic-bezier(0.16,1,0.3,1) 0.1s both">LOUIS</div>
+      </div>
+      <div style="overflow:hidden">
+        <div style="font-family:Anton,sans-serif;font-size:clamp(88px,15vw,230px);line-height:0.92;letter-spacing:0.005em;animation:rise 1.1s cubic-bezier(0.16,1,0.3,1) 0.28s both">JEFFERSON</div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:44px;gap:24px;flex-wrap:wrap;animation:fadeup 1s cubic-bezier(0.16,1,0.3,1) 0.7s both">
+    <div style="font-size:17px;font-weight:500;letter-spacing:0.02em">CREATIVE DIRECTION / CONTENT STRATEGY <span style="color:var(--accent)">✱</span> SHOOT &amp; EDIT</div>
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">SCROLL ↓</div>
+  </div>
+</header>
+
+<!-- brand marquee -->
+<div style="border-top:1px solid rgba(234,231,226,0.14);border-bottom:1px solid rgba(234,231,226,0.14);margin-top:60px">
+  <div style="overflow:hidden;padding:26px 0">
+    <div class="logostrip" style="display:flex;width:max-content;animation:marquee 80s linear infinite">
+      <div style="display:flex;align-items:center">
+        <img src="assets/logos/ignite.svg" alt="Ignite Travel Group" style="height:48px">
+        <img src="assets/logos/9news.svg" alt="9News" style="height:54px">
+        <img src="assets/logos/mycruises.svg" alt="MyCruises" style="height:40px">
+        <img src="assets/logos/royal-caribbean.svg" alt="Royal Caribbean" style="height:56px">
+        <img src="assets/logos/myfiji.svg" alt="MyFiji" style="height:40px">
+        <img src="assets/logos/ahipara.png" alt="Ahipara Luxury Travel" style="height:64px">
+        <img src="assets/logos/mymaldives.svg" alt="MyMaldives" style="height:40px">
+        <img src="assets/logos/myqueensland.svg" alt="MyQueensland" style="height:40px">
+      </div>
+      <div style="display:flex;align-items:center" aria-hidden="true">
+        <img src="assets/logos/ignite.svg" alt="" style="height:48px">
+        <img src="assets/logos/9news.svg" alt="" style="height:54px">
+        <img src="assets/logos/mycruises.svg" alt="" style="height:40px">
+        <img src="assets/logos/royal-caribbean.svg" alt="" style="height:56px">
+        <img src="assets/logos/myfiji.svg" alt="" style="height:40px">
+        <img src="assets/logos/ahipara.png" alt="" style="height:64px">
+        <img src="assets/logos/mymaldives.svg" alt="" style="height:40px">
+        <img src="assets/logos/myqueensland.svg" alt="" style="height:40px">
+      </div>
+      <div style="display:flex;align-items:center" aria-hidden="true">
+        <img src="assets/logos/ignite.svg" alt="" style="height:48px">
+        <img src="assets/logos/9news.svg" alt="" style="height:54px">
+        <img src="assets/logos/mycruises.svg" alt="" style="height:40px">
+        <img src="assets/logos/royal-caribbean.svg" alt="" style="height:56px">
+        <img src="assets/logos/myfiji.svg" alt="" style="height:40px">
+        <img src="assets/logos/ahipara.png" alt="" style="height:64px">
+        <img src="assets/logos/mymaldives.svg" alt="" style="height:40px">
+        <img src="assets/logos/myqueensland.svg" alt="" style="height:40px">
+      </div>
+      <div style="display:flex;align-items:center" aria-hidden="true">
+        <img src="assets/logos/ignite.svg" alt="" style="height:48px">
+        <img src="assets/logos/9news.svg" alt="" style="height:54px">
+        <img src="assets/logos/mycruises.svg" alt="" style="height:40px">
+        <img src="assets/logos/royal-caribbean.svg" alt="" style="height:56px">
+        <img src="assets/logos/myfiji.svg" alt="" style="height:40px">
+        <img src="assets/logos/ahipara.png" alt="" style="height:64px">
+        <img src="assets/logos/mymaldives.svg" alt="" style="height:40px">
+        <img src="assets/logos/myqueensland.svg" alt="" style="height:40px">
+      </div>
+    </div>
+  </div>
+  <div style="overflow:hidden;padding:26px 0;border-top:1px solid rgba(234,231,226,0.14)">
+    <div class="logostrip" style="display:flex;width:max-content;animation:marqueeRev 80s linear infinite">
+      <div style="display:flex;align-items:center">
+        <img src="assets/logos/sunrise.webp" alt="Sunrise" style="height:60px">
+        <img src="assets/logos/myholiday.svg" alt="MyHoliday" style="height:40px">
+        <img src="assets/logos/suns.png" alt="Gold Coast SUNS" style="height:70px">
+        <img src="assets/logos/mybali.svg" alt="MyBali" style="height:40px">
+        <img src="assets/logos/explorations.png" alt="Explorations by Norwegian" style="height:38px">
+        <img src="assets/logos/myhawaii.svg" alt="MyHawaii" style="height:40px">
+        <img src="assets/logos/mythailand.svg" alt="MyThailand" style="height:40px">
+        <img src="assets/logos/myvanuatu.svg" alt="MyVanuatu" style="height:40px">
+      </div>
+      <div style="display:flex;align-items:center" aria-hidden="true">
+        <img src="assets/logos/sunrise.webp" alt="" style="height:60px">
+        <img src="assets/logos/myholiday.svg" alt="" style="height:40px">
+        <img src="assets/logos/suns.png" alt="" style="height:70px">
+        <img src="assets/logos/mybali.svg" alt="" style="height:40px">
+        <img src="assets/logos/explorations.png" alt="" style="height:38px">
+        <img src="assets/logos/myhawaii.svg" alt="" style="height:40px">
+        <img src="assets/logos/mythailand.svg" alt="" style="height:40px">
+        <img src="assets/logos/myvanuatu.svg" alt="" style="height:40px">
+      </div>
+      <div style="display:flex;align-items:center" aria-hidden="true">
+        <img src="assets/logos/sunrise.webp" alt="" style="height:60px">
+        <img src="assets/logos/myholiday.svg" alt="" style="height:40px">
+        <img src="assets/logos/suns.png" alt="" style="height:70px">
+        <img src="assets/logos/mybali.svg" alt="" style="height:40px">
+        <img src="assets/logos/explorations.png" alt="" style="height:38px">
+        <img src="assets/logos/myhawaii.svg" alt="" style="height:40px">
+        <img src="assets/logos/mythailand.svg" alt="" style="height:40px">
+        <img src="assets/logos/myvanuatu.svg" alt="" style="height:40px">
+      </div>
+      <div style="display:flex;align-items:center" aria-hidden="true">
+        <img src="assets/logos/sunrise.webp" alt="" style="height:60px">
+        <img src="assets/logos/myholiday.svg" alt="" style="height:40px">
+        <img src="assets/logos/suns.png" alt="" style="height:70px">
+        <img src="assets/logos/mybali.svg" alt="" style="height:40px">
+        <img src="assets/logos/explorations.png" alt="" style="height:38px">
+        <img src="assets/logos/myhawaii.svg" alt="" style="height:40px">
+        <img src="assets/logos/mythailand.svg" alt="" style="height:40px">
+        <img src="assets/logos/myvanuatu.svg" alt="" style="height:40px">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ahipara case study -->
+<section id="case-study" style="background:#eae7e2;color:#141311;padding:84px 44px 76px">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;margin-bottom:30px">
+    <span style="color:var(--accent)">(FEATURED CASE STUDY)</span>
+    <span style="color:rgba(11,11,12,0.55)">AHIPARA LUXURY TRAVEL · BRAND · WEB · CONTENT</span>
+  </div>
+  <div class="reveal" style="display:flex;gap:52px;align-items:flex-start;flex-wrap:wrap;margin-bottom:40px">
+    <div style="flex:1.25;min-width:320px">
+      <h2 style="margin:0 0 24px;font-family:Anton,sans-serif;font-size:clamp(30px,3.6vw,56px);line-height:1;font-weight:400">I WAS HIRED TO SHOOT THE VIDEOS. <span style="color:transparent;-webkit-text-stroke:1.5px #141311">I ENDED UP BUILDING THE WHOLE BRAND.</span></h2>
+      <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:rgba(11,11,12,0.75);max-width:52ch;text-wrap:pretty">End-to-end ownership of a 25-year-old luxury travel brand's entire digital presence: the website, the voice, the content, and the growth strategy behind it. One person, concept to published. This is the part of my work that happens after the camera's packed away.</p>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.06em;line-height:1.95;color:rgba(11,11,12,0.6)">CLIENT · AHIPARA LUXURY TRAVEL<br>ROLE · CREATIVE &amp; BUILD LEAD<br>STACK · NEXT.JS · SANITY · TAILWIND<br>SCOPE · WEBSITE · BRAND · CONTENT · STRATEGY</div>
+    </div>
+    <div style="flex:1;min-width:300px;max-width:500px">
+      <div style="aspect-ratio:16/9;position:relative;overflow:hidden;border:1px solid rgba(11,11,12,0.2)">
+        <div id="reelWrap" style="position:absolute;inset:0">
+          <img src="https://img.youtube.com/vi/40EpqI-DsK8/maxresdefault.jpg" alt="Ahipara footage reel cover" style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <button id="playReel" aria-label="Play showreel" class="playbtn" style="cursor:pointer;width:84px;height:84px;border-radius:50%;border:1px solid rgba(234,231,226,0.85);background:rgba(11,11,12,0.15);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
+              <span style="width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:17px solid var(--accent);margin-left:5px"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(11,11,12,0.5);margin-top:10px">SHOWREEL · THE FOOTAGE BEHIND THE BRAND · 01:32</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:rgba(11,11,12,0.16);border:1px solid rgba(11,11,12,0.16);margin-bottom:40px">
+    <div style="background:#eae7e2;padding:20px 22px"><div style="font-family:Anton,sans-serif;font-size:50px;line-height:1">30+</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;margin-top:8px;color:rgba(11,11,12,0.6)">PAGES DESIGNED &amp; BUILT</div></div>
+    <div style="background:#eae7e2;padding:20px 22px"><div style="font-family:Anton,sans-serif;font-size:50px;line-height:1">23</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;margin-top:8px;color:rgba(11,11,12,0.6)">LONG-FORM GUIDES WRITTEN</div></div>
+    <div style="background:#eae7e2;padding:20px 22px"><div style="font-family:Anton,sans-serif;font-size:50px;line-height:1">25<span style="font-size:26px">YRS</span></div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;margin-top:8px;color:rgba(11,11,12,0.6)">OF JOURNEYS, MAPPED</div></div>
+    <div style="background:#eae7e2;padding:20px 22px"><div style="font-family:Anton,sans-serif;font-size:50px;line-height:1">1</div><div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;margin-top:8px;color:rgba(11,11,12,0.6)">PERSON · CONCEPT TO PUBLISHED</div></div>
+  </div>
+
+  <!-- four pillars (compact) -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px 40px;margin-bottom:44px">
+    <div class="reveal" style="border-top:1px solid rgba(11,11,12,0.25);padding-top:18px">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">01 · THE BUILD</div>
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:600;line-height:1.3">Built the whole website from scratch.</h3>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(11,11,12,0.65)">30+ pages on a modern Next.js · Sanity · Tailwind stack the team updates without touching code.</p>
+    </div>
+    <div class="reveal" style="border-top:1px solid rgba(11,11,12,0.25);padding-top:18px">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">02 · THE VOICE</div>
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:600;line-height:1.3">Writing that sounds like the founder, not a press release.</h3>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(11,11,12,0.65)">A founder-voice system across 23 long-form guides and an ongoing editorial series: assured, specific, never salesy.</p>
+    </div>
+    <div class="reveal" style="border-top:1px solid rgba(11,11,12,0.25);padding-top:18px">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">03 · SIGNATURE BUILDS</div>
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:600;line-height:1.3">Pieces most brands never make.</h3>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(11,11,12,0.65)">The interactive Journey Atlas data-viz, and Journey Books, trips typeset into private keepsakes.</p>
+    </div>
+    <div class="reveal" style="border-top:1px solid rgba(11,11,12,0.25);padding-top:18px">
+      <div style="font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">04 · THE STRATEGY</div>
+      <h3 style="margin:0 0 8px;font-size:16px;font-weight:600;line-height:1.3">Built the brand to be found.</h3>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(11,11,12,0.65)">Growth across referral, partnerships and owned discovery: SEO · AEO · structured data for AI answers.</p>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(11,11,12,0.25);padding-top:32px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap">
+    <p style="margin:0;font-size:clamp(18px,2vw,26px);font-weight:500;line-height:1.3;max-width:24ch;text-wrap:pretty">Hired for one thing. Trusted with everything.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="https://ahipara-luxury-travel.vercel.app/" target="_blank" rel="noopener" class="cta-primary" style="display:inline-flex;align-items:center;gap:14px;background:#141311;color:#eae7e2;padding:18px 34px;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:0.14em;box-shadow:5px 5px 0 var(--accent)">SEE THE LIVE SITE <span style="font-size:16px">↗</span></a>
+      <a href="#contact" class="cta-ghost" style="display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(11,11,12,0.4);color:#141311;padding:17px 28px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em">LET'S BUILD →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Ignite summary -->
+<section style="padding:130px 44px 0">
+  <div class="reveal" style="display:flex;gap:72px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:none">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:18px">(THE DAY JOB)</div>
+      <h2 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(36px,4vw,64px);line-height:1;font-weight:400">IGNITE TRAVEL GROUP</h2>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(234,231,226,0.5);margin-top:14px">FLIGHT CENTRE TRAVEL GROUP · SINCE 2025</div>
+    </div>
+    <div style="flex:1;min-width:320px;max-width:640px">
+      <p style="margin:0 0 22px;font-size:16px;line-height:1.7;color:rgba(234,231,226,0.7);text-wrap:pretty">Videographer and editor across MyCruises, MyHoliday and the wider brand family: hundreds of paid media assets, broadcast placements on 9News and Sunrise, onboard shoots for Explorations by Norwegian (MyCruises' new cruise line launching in partnership with Norwegian), and AFL partnership content with the Gold Coast SUNS. High volume, broadcast standard, commercially measured.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.12em">
+        <span style="border:1px solid rgba(234,231,226,0.25);padding:7px 14px">PERFORMANCE CREATIVE</span>
+        <span style="border:1px solid rgba(234,231,226,0.25);padding:7px 14px">BROADCAST / TVC</span>
+        <span style="border:1px solid rgba(234,231,226,0.25);padding:7px 14px">ON LOCATION</span>
+        <span style="border:1px solid rgba(234,231,226,0.25);padding:7px 14px">MOTION &amp; LED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- selected work (filmstrip) -->
+<section id="work" style="padding:130px 44px 60px">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:60px">
+    <h2 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(44px,6vw,84px);line-height:1;font-weight:400">SELECTED WORK</h2>
+    <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">06 PROJECTS · IGNITE TRAVEL GROUP &amp; AHIPARA</span>
+  </div>
+</section>
+
+<div id="workScroll" style="height:300vh;position:relative">
+  <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden">
+    <div id="workStrip" style="display:flex;gap:64px;width:max-content;padding:0 44px;align-items:stretch;will-change:transform">
+
+      <!-- 01 -->
+      <article class="workcard" style="width:min(58vw,900px);flex:none">
+        <div class="workmedia" data-video="uLAG5cc4Fls" style="aspect-ratio:16/9;position:relative;overflow:hidden">
+          <div class="grayhover" style="position:absolute;inset:0"><img src="https://img.youtube.com/vi/uLAG5cc4Fls/maxresdefault.jpg" alt="Explorations by Norwegian launch film" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">ON LOCATION</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">01 · CRUISE LAUNCH FILM</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">EXPLORATIONS BY NORWEGIAN</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Explorations by Norwegian · 2025<br>Director / DP / Editor</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Storyboarded, directed, shot and edited: the launch film for Explorations by Norwegian, MyCruises' new cruise line built in partnership with Norwegian, produced onboard with model talent at sea.</p>
+        <a href="https://www.youtube.com/watch?v=uLAG5cc4Fls" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
+      </article>
+
+      <!-- 02 -->
+      <article class="workcard" style="width:min(58vw,900px);flex:none">
+        <div class="workmedia" data-video="bt8sfZgoK_c" style="aspect-ratio:16/9;position:relative;overflow:hidden">
+          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/virtual-event.jpg" alt="Explorations by Norwegian virtual event" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">VIRTUAL EVENT</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">02 · DOCUMENTARY / LIVE EVENT</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">THE VIRTUAL EVENT</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Explorations by Norwegian · 2025<br>Director / Videographer</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">A documentary-style virtual event for the launch of Explorations by Norwegian, planned, filmed and delivered as a live audience experience.</p>
+        <a href="https://youtu.be/bt8sfZgoK_c" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
+      </article>
+
+      <!-- BVOD & DRTV: hidden until a thumbnail + video link is supplied. Remove display:none to restore (and renumber cards). -->
+      <article class="workcard" style="display:none;width:min(58vw,900px);flex:none">
+        <div class="workmedia ph" style="aspect-ratio:16/9;position:relative"><span>BVOD &amp; DRTV · BROADCAST CUT<br>STILL ON REQUEST</span>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">TVC</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">03 · BROADCAST</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">BVOD &amp; DRTV</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">9News · Sunrise · 2025<br>Producer / Editor</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Broadcast-ready campaign creative for BVOD and DRTV placements, including 9News and Sunrise segments, cut for clarity, pacing and response.</p>
+      </article>
+
+      <!-- 04 -->
+      <article class="workcard" style="width:min(58vw,900px);flex:none">
+        <div class="workmedia" data-video="wV35UzOP8xc" style="aspect-ratio:16/9;position:relative;overflow:hidden">
+          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/pmax.jpg" alt="P-Max performance creative: Holiday Like a VIP in Fiji" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">×100+ ASSETS</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">03 · PERFORMANCE CREATIVE</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">P-MAX AT SCALE</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">MyCruises · MyHoliday · 2025<br>Editor / Motion</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Hundreds of paid media assets across formats and placements, optimised for hook retention, pacing and platform performance, iterated through A/B testing with the social team.</p>
+        <a href="https://www.youtube.com/watch?v=wV35UzOP8xc" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
+      </article>
+
+      <!-- 05 -->
+      <article class="workcard" style="width:min(58vw,900px);flex:none">
+        <div class="workmedia" data-video="VNDySGjTS1o" style="aspect-ratio:16/9;position:relative;overflow:hidden">
+          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/china-touring.jpg" alt="China Touring: The New Dynasty" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">ON LOCATION</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">04 · DESTINATION FILM</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">CHINA TOURING</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Ignite Travel Group · 2025<br>Director / DP</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Travelled to China to plan, storyboard and capture touring division content, with full ownership from treatment to delivery.</p>
+        <a href="https://www.youtube.com/watch?v=VNDySGjTS1o" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
+      </article>
+
+      <!-- 06 -->
+      <article class="workcard" style="width:min(58vw,900px);flex:none">
+        <div class="workmedia" data-video="2U-MWo9E7KI" style="aspect-ratio:16/9;position:relative;overflow:hidden">
+          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/suns-partnership.jpg" alt="Gold Coast SUNS partnership content" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">LED + DIGITAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">05 · SPORT PARTNERSHIP</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">GOLD COAST SUNS</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Gold Coast SUNS · AFL · 2025<br>Motion / Editor</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">AFL partnership content with the Gold Coast SUNS: LED stadium signage animation and digital assets built for match-day scale.</p>
+        <a href="https://www.youtube.com/watch?v=2U-MWo9E7KI" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
+      </article>
+
+      <!-- 07 -->
+      <article class="workcard" style="width:min(58vw,900px);flex:none">
+        <div class="workmedia" data-video="QxHgJc3cPGg" style="aspect-ratio:16/9;position:relative;overflow:hidden">
+          <div class="grayhover" style="position:absolute;inset:0"><img src="https://img.youtube.com/vi/QxHgJc3cPGg/maxresdefault.jpg" alt="Accessible New Zealand with Sophie Morgan" style="width:100%;height:100%;object-fit:cover"></div>
+          <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
+          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">FEAT. SOPHIE MORGAN</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
+          <div style="min-width:0">
+            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">06 · CREATOR-LED TRAVEL FILM</div>
+            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">ACCESSIBLE NEW ZEALAND</h3>
+          </div>
+          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Ahipara × Tourism New Zealand<br>Director / DP / Editor</div>
+        </div>
+        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Creator-led storytelling built around presenter and advocate Sophie Morgan and her global social audience: an accessible-travel film across Aotearoa New Zealand, made with Ahipara in partnership with Tourism New Zealand.</p>
+        <a href="https://www.youtube.com/watch?v=QxHgJc3cPGg" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
+      </article>
+
+      <a href="#contact" style="flex:none;width:320px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border:1px solid rgba(234,231,226,0.2)">
+        <span style="font-family:Anton,sans-serif;font-size:32px">MORE ON REQUEST</span>
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent)">GET IN TOUCH →</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- short-form: HIDDEN STUB. To activate: drop 9:16 clips into assets/shortform/ as reel-01.mp4 etc.,
+     update the sources below, and delete the hidden + display:none attributes from this section. -->
+<section id="shortform" hidden style="display:none;padding:130px 44px;border-top:1px solid rgba(234,231,226,0.14)">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:60px">
+    <h2 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(44px,6vw,84px);line-height:1;font-weight:400">SHORT-FORM</h2>
+    <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">REELS &amp; VERTICAL · BUILT FOR THE FEED</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+    <div style="aspect-ratio:9/16;overflow:hidden;background:#121215"><video src="assets/shortform/reel-01.mp4" preload="none" controls muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video></div>
+    <div style="aspect-ratio:9/16;overflow:hidden;background:#121215"><video src="assets/shortform/reel-02.mp4" preload="none" controls muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video></div>
+    <div style="aspect-ratio:9/16;overflow:hidden;background:#121215"><video src="assets/shortform/reel-03.mp4" preload="none" controls muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video></div>
+    <div style="aspect-ratio:9/16;overflow:hidden;background:#121215"><video src="assets/shortform/reel-04.mp4" preload="none" controls muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video></div>
+  </div>
+</section>
+
+<!-- stills -->
+<section id="photos" style="padding:130px 44px;border-top:1px solid rgba(234,231,226,0.14)">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:60px">
+    <h2 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(44px,6vw,84px);line-height:1;font-weight:400">STILLS</h2>
+    <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">PHOTOGRAPHY · ON LOCATION &amp; OFF DUTY</span>
+  </div>
+  <div class="reveal stills-grid">
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-01.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-02.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-03.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-04.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-05.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-06.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-08.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-09.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-10.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-11.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+    <figure class="grayhover"><img src="assets/gallery/web/gallery-12.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- about -->
+<section id="about" class="about-grid" style="padding:120px 44px;border-top:1px solid rgba(234,231,226,0.14);display:grid;grid-template-columns:minmax(240px,400px) minmax(0,1fr);gap:clamp(40px,6vw,90px);align-items:start">
+  <div class="reveal" style="aspect-ratio:3/4;overflow:hidden"><img src="assets/gallery/web/portrait.jpg" alt="Louis Jefferson on location, camera in hand" style="width:100%;height:100%;object-fit:cover"></div>
+  <div class="reveal">
+    <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:28px">(ABOUT)</div>
+    <p style="margin:0 0 28px;font-size:clamp(24px,2.4vw,34px);line-height:1.35;font-weight:500;max-width:24ch;text-wrap:pretty">I shoot what I can edit, and I edit what the story needs.</p>
+    <p style="margin:0 0 48px;font-size:15px;line-height:1.7;color:rgba(234,231,226,0.65);max-width:56ch">I'm Louis, a commercial video producer and editor at Ignite Travel Group, part of Flight Centre Travel Group, delivering high-volume performance creative, broadcast-ready campaigns and on-location brand storytelling. I work end to end, from ideas, scripts and storyboards through directing, post, colour, motion and delivery, building repeatable systems that keep creative cohesive and commercially effective. Previously, full creative ownership at Ahipara Luxury Travel.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:28px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.08em;line-height:1.9;color:rgba(234,231,226,0.6)">
+      <div><span style="color:var(--accent)">(BASE)</span><br>GOLD COAST, AUSTRALIA<br>ON-SITE DAILY<br>+ OPEN TO TRAVEL</div>
+      <div><span style="color:var(--accent)">(TOOLS)</span><br>PREMIERE PRO<br>PHOTOSHOP<br>INDESIGN</div>
+      <div><span style="color:var(--accent)">(EDUCATION)</span><br>BDes MEDIA DESIGN<br>VICTORIA UNIVERSITY<br>OF WELLINGTON</div>
+      <div><span style="color:var(--accent)">(SEEKING)</span><br>CONTENT DIRECTION<br>&amp; CREATIVE<br>LEADERSHIP ROLES</div>
+    </div>
+  </div>
+</section>
+
+<!-- capabilities -->
+<section style="padding:40px 44px 120px">
+  <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:28px">(CAPABILITIES)</div>
+  <div style="display:flex;flex-direction:column">
+    <div class="caprow" style="display:flex;align-items:center;gap:40px;padding:30px 0;border-top:1px solid rgba(234,231,226,0.14)">
+      <span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(234,231,226,0.4);width:32px">01</span>
+      <span style="font-family:Anton,sans-serif;font-size:clamp(26px,2.6vw,38px);flex:1">STRATEGY &amp; SCRIPT</span>
+      <span style="font-size:13.5px;color:rgba(234,231,226,0.55);max-width:38ch;text-align:right">Ideas, scripts and content strategy, written to sound like the person on camera.</span>
+    </div>
+    <div class="caprow" style="display:flex;align-items:center;gap:40px;padding:30px 0;border-top:1px solid rgba(234,231,226,0.14)">
+      <span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(234,231,226,0.4);width:32px">02</span>
+      <span style="font-family:Anton,sans-serif;font-size:clamp(26px,2.6vw,38px);flex:1">DIRECTION</span>
+      <span style="font-size:13.5px;color:rgba(234,231,226,0.55);max-width:38ch;text-align:right">Storyboards and treatments through to directing talent on set.</span>
+    </div>
+    <div class="caprow" style="display:flex;align-items:center;gap:40px;padding:30px 0;border-top:1px solid rgba(234,231,226,0.14)">
+      <span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(234,231,226,0.4);width:32px">03</span>
+      <span style="font-family:Anton,sans-serif;font-size:clamp(26px,2.6vw,38px);flex:1">CINEMATOGRAPHY</span>
+      <span style="font-size:13.5px;color:rgba(234,231,226,0.55);max-width:38ch;text-align:right">On location worldwide: cruise ships, stadiums, studios and beyond.</span>
+    </div>
+    <div class="caprow" style="display:flex;align-items:center;gap:40px;padding:30px 0;border-top:1px solid rgba(234,231,226,0.14)">
+      <span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(234,231,226,0.4);width:32px">04</span>
+      <span style="font-family:Anton,sans-serif;font-size:clamp(26px,2.6vw,38px);flex:1">EDITING</span>
+      <span style="font-size:13.5px;color:rgba(234,231,226,0.55);max-width:38ch;text-align:right">High-volume performance creative, broadcast campaigns and cutdown systems.</span>
+    </div>
+    <div class="caprow" style="display:flex;align-items:center;gap:40px;padding:30px 0;border-top:1px solid rgba(234,231,226,0.14);border-bottom:1px solid rgba(234,231,226,0.14)">
+      <span style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(234,231,226,0.4);width:32px">05</span>
+      <span style="font-family:Anton,sans-serif;font-size:clamp(26px,2.6vw,38px);flex:1">MOTION &amp; COLOUR</span>
+      <span style="font-size:13.5px;color:rgba(234,231,226,0.55);max-width:38ch;text-align:right">Motion graphics, LED signage animation, grade and multi-format delivery.</span>
+    </div>
+  </div>
+</section>
+
+<!-- contact -->
+<section id="contact" style="padding:160px 44px 36px;border-top:1px solid rgba(234,231,226,0.14);text-align:center">
+  <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:36px">(NEXT PROJECT)</div>
+  <h2 style="margin:0 0 56px;font-family:Anton,sans-serif;font-size:clamp(56px,9vw,150px);line-height:0.95;font-weight:400">LET'S MAKE<br>SOMETHING<br><span style="color:transparent;-webkit-text-stroke:1.5px #eae7e2">WORTH WATCHING</span></h2>
+  <a href="mailto:Louisjefferson607@gmail.com" style="font-size:clamp(18px,2vw,26px);font-weight:500;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:6px">Louisjefferson607@gmail.com</a>
+  <div style="margin-top:22px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;color:rgba(234,231,226,0.55)">+61 489 309 978 · GOLD COAST, AUSTRALIA</div>
+  <div style="display:flex;justify-content:center;gap:40px;margin-top:64px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;flex-wrap:wrap">
+    <!-- add INSTAGRAM / VIMEO links here once real profile URLs are supplied (dead links removed intentionally) -->
+    <a href="https://www.linkedin.com/in/louis-jefferson-51815b218/" target="_blank" rel="noopener">LINKEDIN ↗</a>
+  </div>
+  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:130px;padding-top:24px;border-top:1px solid rgba(234,231,226,0.14);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;color:rgba(234,231,226,0.45)">
+    <span>© 2026 LOUIS JEFFERSON</span>
+    <span>SHOT · CUT · GRADED</span>
+    <a href="#">BACK TO TOP ↑</a>
+  </div>
+</section>
+
+<!-- film grain -->
+<div style="position:fixed;inset:-50px;z-index:-1;pointer-events:none;opacity:0.35;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E&quot;);animation:grainshift 0.7s steps(1) infinite"></div>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- intro overlay (once per session) ---- */
+  var intro = document.getElementById("intro");
+  var seen = false;
+  try { seen = !!sessionStorage.getItem("lj_intro_seen"); } catch(e){}
+  if (seen || reduceMotion) {
+    if (intro && intro.parentNode) intro.parentNode.removeChild(intro);
+  } else {
+    try { sessionStorage.setItem("lj_intro_seen", "1"); } catch(e){}
+    setTimeout(function(){ if (intro && intro.parentNode) intro.parentNode.removeChild(intro); }, 2700);
+  }
+
+  /* ---- hero pointer parallax ---- */
+  var nameEl = document.getElementById("nameEl");
+  if (nameEl && !reduceMotion && window.matchMedia("(pointer:fine)").matches) {
+    window.addEventListener("mousemove", function(e){
+      var x = e.clientX / window.innerWidth - 0.5,
+          y = e.clientY / window.innerHeight - 0.5;
+      nameEl.style.transform =
+        "perspective(1100px) rotateY(" + (x*6).toFixed(2) + "deg) rotateX(" + (-y*6).toFixed(2) +
+        "deg) translate3d(" + (x*26).toFixed(1) + "px," + (y*14).toFixed(1) + "px,0)";
+    }, {passive:true});
+  }
+
+  /* ---- reveal on scroll ---- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, {threshold:0.15, rootMargin:"0px 0px -8% 0px"});
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- reel play ---- */
+  var playReel = document.getElementById("playReel");
+  if (playReel) {
+    playReel.addEventListener("click", function(){
+      var wrap = document.getElementById("reelWrap");
+      wrap.innerHTML =
+        '<iframe src="https://www.youtube.com/embed/40EpqI-DsK8?autoplay=1&rel=0" ' +
+        'title="Ahipara footage reel" allow="autoplay; fullscreen; encrypted-media" allowfullscreen ' +
+        'style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000"></iframe>';
+    });
+  }
+
+  /* ---- click to play work videos inline (with sound + controls) ---- */
+  document.querySelectorAll(".workmedia[data-video]").forEach(function(media){
+    media.setAttribute("role", "button");
+    media.setAttribute("tabindex", "0");
+    media.setAttribute("aria-label", "Play video");
+    function play(){
+      if (media.classList.contains("playing")) return;
+      var id = media.getAttribute("data-video");
+      media.classList.add("playing");
+      media.innerHTML =
+        '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" ' +
+        'title="video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen ' +
+        'style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000"></iframe>';
+    }
+    media.addEventListener("click", play);
+    media.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " "){ e.preventDefault(); play(); }
+    });
+  });
+
+  /* ---- scroll-driven: progress bar + filmstrip ---- */
+  var bar = document.getElementById("progressBar");
+  var strip = document.getElementById("workStrip");
+  var section = document.getElementById("workScroll");
+  var ticking = false;
+
+  function frame(){
+    ticking = false;
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    var y = window.pageYOffset || doc.scrollTop;
+    if (bar) bar.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
+
+    if (strip && section){
+      var rect = section.getBoundingClientRect();
+      var total = section.offsetHeight - window.innerHeight;
+      var progressed = Math.min(Math.max(-rect.top, 0), total);
+      var frac = total > 0 ? progressed / total : 0;
+      var end = -(strip.scrollWidth - window.innerWidth + 88);
+      if (end > 0) end = 0;
+      strip.style.transform = "translateX(" + (end * frac) + "px)";
+    }
+  }
+  function onScroll(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(frame); }
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll, {passive:true});
+  frame();
+})();
+</script>
+</body>
+</html>

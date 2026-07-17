@@ -1,0 +1,9 @@
+# Large camera-original photos — only the optimized assets/gallery/web/ copies are deployed
+assets/gallery/*.jpg
+
+# Local tooling / editor / OS cruft
+.claude/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
