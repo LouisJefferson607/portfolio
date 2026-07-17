@@ -113,6 +113,13 @@
   #theater.in .tframe{opacity:1;transform:scale(1)}
   #theater .tframe iframe{width:100%;height:100%;border:0;display:block}
 
+  /* director's commentary */
+  .dnote{display:none;margin:4px 0 18px;border-left:2px solid var(--accent);padding:10px 14px;background:rgba(255,68,0,0.06);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.04em;line-height:1.75;color:rgba(234,231,226,0.75);max-width:62ch}
+  .dnote b{color:var(--accent);font-weight:700;letter-spacing:0.12em}
+  body.commentary .dnote{display:block;animation:fadeup .5s cubic-bezier(0.16,1,0.3,1) both}
+  #case-study .dnote{color:rgba(11,11,12,0.72);background:rgba(255,68,0,0.07)}
+  #cmtToggle:hover{color:var(--accent)}
+
   @media (max-width:760px){
     nav{padding:18px 22px !important}
     nav .navlinks{gap:20px !important}
@@ -142,8 +149,11 @@
 <!-- nav -->
 <nav style="position:fixed;top:2px;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:22px 44px;mix-blend-mode:difference;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em">
   <a href="#" style="font-weight:700;font-size:13px;letter-spacing:0.06em">LJ©26</a>
-  <div class="navlinks" style="display:flex;gap:36px">
+  <div class="navlinks" style="display:flex;gap:36px;align-items:center">
     <a href="#work">WORK</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+    <button id="cmtToggle" type="button" aria-pressed="false" title="Toggle director's commentary" style="background:none;border:0;color:inherit;font:inherit;letter-spacing:0.14em;cursor:pointer;display:flex;align-items:center;gap:8px;padding:0;transition:color .25s">
+      <span id="cmtDot" style="width:7px;height:7px;border-radius:50%;background:rgba(234,231,226,0.35);transition:background .25s"></span>COMMENTARY
+    </button>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite"></span>
@@ -276,6 +286,7 @@
       <h2 style="margin:0 0 24px;font-family:Anton,sans-serif;font-size:clamp(30px,3.6vw,56px);line-height:1;font-weight:400">I WAS HIRED TO SHOOT THE VIDEOS. <span style="color:transparent;-webkit-text-stroke:1.5px #141311">I ENDED UP BUILDING THE WHOLE BRAND.</span></h2>
       <p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:rgba(11,11,12,0.75);max-width:52ch;text-wrap:pretty">End-to-end ownership of a 25-year-old luxury travel brand's entire digital presence: the website, the voice, the content, and the growth strategy behind it. One person, concept to published. This is the part of my work that happens after the camera's packed away.</p>
       <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.06em;line-height:1.95;color:rgba(11,11,12,0.6)">CLIENT · AHIPARA LUXURY TRAVEL<br>ROLE · CREATIVE &amp; BUILD LEAD<br>STACK · NEXT.JS · SANITY · TAILWIND<br>SCOPE · WEBSITE · BRAND · CONTENT · STRATEGY</div>
+      <div class="dnote" style="margin-top:18px"><b>DIRECTOR'S NOTE</b> · Hired for the camera, trusted with the brand. This case is the clearest proof of how I work: the thinking leads, the footage follows.</div>
     </div>
     <div style="flex:1;min-width:300px;max-width:500px">
       <div style="aspect-ratio:16/9;position:relative;overflow:hidden;border:1px solid rgba(11,11,12,0.2)">
@@ -378,6 +389,7 @@
           <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Explorations by Norwegian · 2025<br>Director / DP / Editor</div>
         </div>
         <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Storyboarded, directed, shot and edited: the launch film for Explorations by Norwegian, MyCruises' new cruise line built in partnership with Norwegian, produced onboard with model talent at sea.</p>
+        <div class="dnote"><b>DIRECTOR'S NOTE</b> · A ship at sea gives you one take on everything: light, weather, talent. The storyboard had to flex daily without losing the campaign's spine.</div>
         <a href="https://www.youtube.com/watch?v=uLAG5cc4Fls" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
       </article>
 
@@ -396,6 +408,7 @@
           <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Explorations by Norwegian · 2025<br>Director / Videographer</div>
         </div>
         <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">A documentary-style virtual event for the launch of Explorations by Norwegian, planned, filmed and delivered as a live audience experience.</p>
+        <div class="dnote"><b>DIRECTOR'S NOTE</b> · A live audience means no second pass in the edit. The doc structure was built around the presenter so the event could breathe without losing pace.</div>
         <a href="https://youtu.be/bt8sfZgoK_c" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
       </article>
 
@@ -429,6 +442,7 @@
           <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">MyCruises · MyHoliday · 2025<br>Editor / Motion</div>
         </div>
         <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Hundreds of paid media assets across formats and placements, optimised for hook retention, pacing and platform performance, iterated through A/B testing with the social team.</p>
+        <div class="dnote"><b>DIRECTOR'S NOTE</b> · At this volume the creative brain becomes a system: hooks tested, pacing measured, winners scaled. The craft is knowing what to keep when the data talks.</div>
         <a href="https://www.youtube.com/watch?v=wV35UzOP8xc" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
       </article>
 
@@ -447,6 +461,7 @@
           <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Ignite Travel Group · 2025<br>Director / DP</div>
         </div>
         <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Travelled to China to plan, storyboard and capture touring division content, with full ownership from treatment to delivery.</p>
+        <div class="dnote"><b>DIRECTOR'S NOTE</b> · Foreign locations, moving schedule, no reshoots. The treatment was written to survive contact with reality and still cut like the pitch.</div>
         <a href="https://www.youtube.com/watch?v=VNDySGjTS1o" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
       </article>
 
@@ -465,6 +480,7 @@
           <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Gold Coast SUNS · AFL · 2025<br>Motion / Editor</div>
         </div>
         <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">AFL partnership content with the Gold Coast SUNS: LED stadium signage animation and digital assets built for match-day scale.</p>
+        <div class="dnote"><b>DIRECTOR'S NOTE</b> · Stadium LED is design at architecture scale: readable at ninety metres, on brand at every frame. Built for match day, reused all season.</div>
         <a href="https://www.youtube.com/watch?v=2U-MWo9E7KI" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
       </article>
 
@@ -483,6 +499,7 @@
           <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Ahipara × Tourism New Zealand<br>Director / DP / Editor</div>
         </div>
         <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Creator-led storytelling built around presenter and advocate Sophie Morgan and her global social audience: an accessible-travel film across Aotearoa New Zealand, made with Ahipara in partnership with Tourism New Zealand.</p>
+        <div class="dnote"><b>DIRECTOR'S NOTE</b> · Creator-led means the presenter's voice leads and the camera serves it. My job was access, planning and honesty; the story did the rest.</div>
         <a href="https://www.youtube.com/watch?v=QxHgJc3cPGg" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
       </article>
 
@@ -515,6 +532,7 @@
     <h2 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(44px,6vw,84px);line-height:1;font-weight:400">STILLS</h2>
     <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">PHOTOGRAPHY · ON LOCATION &amp; OFF DUTY</span>
   </div>
+  <div class="dnote" style="margin-bottom:32px"><b>DIRECTOR'S NOTE</b> · Stills are how I scout, think and stay sharp between productions. Everything here was shot on personal time.</div>
   <div class="reveal stills-grid">
     <figure class="grayhover"><img src="assets/gallery/web/gallery-01.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
     <figure class="grayhover"><img src="assets/gallery/web/gallery-02.jpg" alt="Photography by Louis Jefferson" loading="lazy"></figure>
@@ -672,6 +690,20 @@
   theaterEl.querySelector(".tclose").addEventListener("click", closeTheater);
   theaterEl.querySelector(".tbackdrop").addEventListener("click", closeTheater);
   document.addEventListener("keydown", function(e){ if (e.key === "Escape" && theaterOpen) closeTheater(); });
+
+  /* ---- director's commentary toggle ---- */
+  var cmtBtn = document.getElementById("cmtToggle");
+  var cmtDot = document.getElementById("cmtDot");
+  function setCommentary(on){
+    document.body.classList.toggle("commentary", on);
+    cmtBtn.setAttribute("aria-pressed", on ? "true" : "false");
+    cmtDot.style.background = on ? "var(--accent)" : "rgba(234,231,226,0.35)";
+    try { localStorage.setItem("lj_commentary", on ? "1" : ""); } catch(err){}
+  }
+  cmtBtn.addEventListener("click", function(){
+    setCommentary(!document.body.classList.contains("commentary"));
+  });
+  try { if (localStorage.getItem("lj_commentary") === "1") setCommentary(true); } catch(err){}
 
   /* ---- reel play ---- */
   var playReel = document.getElementById("playReel");
