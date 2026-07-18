@@ -66,6 +66,27 @@
   .playoverlay .tri{width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid var(--accent);margin-left:5px}
   .workmedia.playing .playoverlay{display:none}
 
+  /* editorial work layout (alternating rows + image parallax) */
+  .editorial .editrow{display:flex;gap:clamp(32px,5vw,72px);align-items:center;margin-bottom:clamp(72px,11vw,148px)}
+  .editorial .editrow.rev{flex-direction:row-reverse}
+  .editrow .em{flex:1.35 1 0;min-width:0}
+  .editrow .et{flex:1 1 0;min-width:0}
+  .editrow .workmedia{aspect-ratio:16/10;position:relative;overflow:hidden}
+  .editrow .pxwrap{position:absolute;left:0;right:0;top:-8%;bottom:-8%;will-change:transform}
+  .editrow .workmedia img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s}
+  .editrow .workmedia:hover img{filter:grayscale(0)}
+  .editrow .badge{position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)}
+  .editrow .kicker{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:16px}
+  .editrow h3{margin:0 0 16px;font-family:Anton,sans-serif;font-size:clamp(34px,3.6vw,54px);line-height:1;font-weight:400}
+  .editrow .meta{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.06em;color:rgba(234,231,226,0.6);margin-bottom:22px}
+  .editrow .desc{margin:0 0 26px;font-size:15px;line-height:1.65;color:rgba(234,231,226,0.65);max-width:48ch}
+  .editrow .watch{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px}
+  @media (max-width:820px){
+    .editorial .editrow{flex-direction:column !important;gap:22px;margin-bottom:64px}
+    .editrow .em,.editrow .et{width:100%;flex:none}
+    .editrow .workmedia{aspect-ratio:16/9}
+  }
+
   /* placeholder tiles for imagery not yet supplied */
   .ph{position:relative;overflow:hidden;background:#121215;display:flex;align-items:center;justify-content:center}
   .ph::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(234,231,226,.035) 0 2px,transparent 2px 11px)}
@@ -357,142 +378,136 @@
     <h2 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(44px,6vw,84px);line-height:1;font-weight:400">SELECTED WORK</h2>
     <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:rgba(234,231,226,0.5)">06 PROJECTS · IGNITE TRAVEL GROUP &amp; AHIPARA</span>
   </div>
-</section>
 
-<div id="workScroll" style="height:300vh;position:relative">
-  <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden">
-    <div id="workStrip" style="display:flex;gap:64px;width:max-content;padding:0 44px;align-items:stretch;will-change:transform">
+  <div class="editorial">
 
-      <!-- 01 -->
-      <article class="workcard" style="width:min(58vw,900px);flex:none">
-        <div class="workmedia" data-video="uLAG5cc4Fls" style="aspect-ratio:16/9;position:relative;overflow:hidden">
-          <div class="grayhover" style="position:absolute;inset:0"><img src="https://img.youtube.com/vi/uLAG5cc4Fls/maxresdefault.jpg" alt="Explorations by Norwegian launch film" style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- 01 -->
+    <article class="workcard editrow reveal">
+      <div class="em">
+        <div class="workmedia" data-video="uLAG5cc4Fls">
+          <div class="pxwrap"><img src="https://img.youtube.com/vi/uLAG5cc4Fls/maxresdefault.jpg" alt="Explorations by Norwegian launch film"></div>
           <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">ON LOCATION</span>
+          <span class="badge">ON LOCATION</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">01 · CRUISE LAUNCH FILM</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">EXPLORATIONS BY NORWEGIAN</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Explorations by Norwegian · 2025<br>Director / DP / Editor</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Storyboarded, directed, shot and edited: the launch film for Explorations by Norwegian, MyCruises' new cruise line built in partnership with Norwegian, produced onboard with model talent at sea.</p>
-        <a href="https://www.youtube.com/watch?v=uLAG5cc4Fls" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
-      </article>
+      </div>
+      <div class="et">
+        <div class="kicker">01 · CRUISE LAUNCH FILM</div>
+        <h3>EXPLORATIONS BY NORWEGIAN</h3>
+        <div class="meta">Explorations by Norwegian · 2025 · Director / DP / Editor</div>
+        <p class="desc">Storyboarded, directed, shot and edited: the launch film for Explorations by Norwegian, MyCruises' new cruise line built in partnership with Norwegian, produced onboard with model talent at sea.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=uLAG5cc4Fls" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
+      </div>
+    </article>
 
-      <!-- 02 -->
-      <article class="workcard" style="width:min(58vw,900px);flex:none">
-        <div class="workmedia" data-video="bt8sfZgoK_c" style="aspect-ratio:16/9;position:relative;overflow:hidden">
-          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/virtual-event.jpg" alt="Explorations by Norwegian virtual event" style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- 02 -->
+    <article class="workcard editrow rev reveal">
+      <div class="em">
+        <div class="workmedia" data-video="bt8sfZgoK_c">
+          <div class="pxwrap"><img src="assets/thumbs/virtual-event.jpg" alt="Explorations by Norwegian virtual event"></div>
           <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">VIRTUAL EVENT</span>
+          <span class="badge">VIRTUAL EVENT</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">02 · DOCUMENTARY / LIVE EVENT</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">THE VIRTUAL EVENT</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Explorations by Norwegian · 2025<br>Director / Videographer</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">A documentary-style virtual event for the launch of Explorations by Norwegian, planned, filmed and delivered as a live audience experience.</p>
-        <a href="https://youtu.be/bt8sfZgoK_c" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
-      </article>
+      </div>
+      <div class="et">
+        <div class="kicker">02 · DOCUMENTARY / LIVE EVENT</div>
+        <h3>THE VIRTUAL EVENT</h3>
+        <div class="meta">Explorations by Norwegian · 2025 · Director / Videographer</div>
+        <p class="desc">A documentary-style virtual event for the launch of Explorations by Norwegian, planned, filmed and delivered as a live audience experience.</p>
+        <a class="watch" href="https://youtu.be/bt8sfZgoK_c" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
+      </div>
+    </article>
 
-      <!-- BVOD & DRTV: hidden until a thumbnail + video link is supplied. Remove display:none to restore (and renumber cards). -->
-      <article class="workcard" style="display:none;width:min(58vw,900px);flex:none">
-        <div class="workmedia ph" style="aspect-ratio:16/9;position:relative"><span>BVOD &amp; DRTV · BROADCAST CUT<br>STILL ON REQUEST</span>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">TVC</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">03 · BROADCAST</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">BVOD &amp; DRTV</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">9News · Sunrise · 2025<br>Producer / Editor</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Broadcast-ready campaign creative for BVOD and DRTV placements, including 9News and Sunrise segments, cut for clarity, pacing and response.</p>
-      </article>
+    <!-- BVOD & DRTV: hidden until a thumbnail + video link is supplied. Remove display:none to restore. -->
+    <article class="workcard editrow" style="display:none">
+      <div class="em">
+        <div class="workmedia ph"><span>BVOD &amp; DRTV · BROADCAST CUT<br>STILL ON REQUEST</span><span class="badge">TVC</span></div>
+      </div>
+      <div class="et">
+        <div class="kicker">· BROADCAST</div>
+        <h3>BVOD &amp; DRTV</h3>
+        <div class="meta">9News · Sunrise · 2025 · Producer / Editor</div>
+        <p class="desc">Broadcast-ready campaign creative for BVOD and DRTV placements, including 9News and Sunrise segments, cut for clarity, pacing and response.</p>
+      </div>
+    </article>
 
-      <!-- 04 -->
-      <article class="workcard" style="width:min(58vw,900px);flex:none">
-        <div class="workmedia" data-video="wV35UzOP8xc" style="aspect-ratio:16/9;position:relative;overflow:hidden">
-          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/pmax.jpg" alt="P-Max performance creative: Holiday Like a VIP in Fiji" style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- 03 -->
+    <article class="workcard editrow reveal">
+      <div class="em">
+        <div class="workmedia" data-video="wV35UzOP8xc">
+          <div class="pxwrap"><img src="assets/thumbs/pmax.jpg" alt="P-Max performance creative: Holiday Like a VIP in Fiji"></div>
           <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">×100+ ASSETS</span>
+          <span class="badge">×100+ ASSETS</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">03 · PERFORMANCE CREATIVE</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">P-MAX AT SCALE</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">MyCruises · MyHoliday · 2025<br>Editor / Motion</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Hundreds of paid media assets across formats and placements, optimised for hook retention, pacing and platform performance, iterated through A/B testing with the social team.</p>
-        <a href="https://www.youtube.com/watch?v=wV35UzOP8xc" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
-      </article>
+      </div>
+      <div class="et">
+        <div class="kicker">03 · PERFORMANCE CREATIVE</div>
+        <h3>P-MAX AT SCALE</h3>
+        <div class="meta">MyCruises · MyHoliday · 2025 · Editor / Motion</div>
+        <p class="desc">Hundreds of paid media assets across formats and placements, optimised for hook retention, pacing and platform performance, iterated through A/B testing with the social team.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=wV35UzOP8xc" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
+      </div>
+    </article>
 
-      <!-- 05 -->
-      <article class="workcard" style="width:min(58vw,900px);flex:none">
-        <div class="workmedia" data-video="VNDySGjTS1o" style="aspect-ratio:16/9;position:relative;overflow:hidden">
-          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/china-touring.jpg" alt="China Touring: The New Dynasty" style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- 04 -->
+    <article class="workcard editrow rev reveal">
+      <div class="em">
+        <div class="workmedia" data-video="VNDySGjTS1o">
+          <div class="pxwrap"><img src="assets/thumbs/china-touring.jpg" alt="China Touring: The New Dynasty"></div>
           <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">ON LOCATION</span>
+          <span class="badge">ON LOCATION</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">04 · DESTINATION FILM</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">CHINA TOURING</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Ignite Travel Group · 2025<br>Director / DP</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Travelled to China to plan, storyboard and capture touring division content, with full ownership from treatment to delivery.</p>
-        <a href="https://www.youtube.com/watch?v=VNDySGjTS1o" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
-      </article>
+      </div>
+      <div class="et">
+        <div class="kicker">04 · DESTINATION FILM</div>
+        <h3>CHINA TOURING</h3>
+        <div class="meta">Ignite Travel Group · 2025 · Director / DP</div>
+        <p class="desc">Travelled to China to plan, storyboard and capture touring division content, with full ownership from treatment to delivery.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=VNDySGjTS1o" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
+      </div>
+    </article>
 
-      <!-- 06 -->
-      <article class="workcard" style="width:min(58vw,900px);flex:none">
-        <div class="workmedia" data-video="2U-MWo9E7KI" style="aspect-ratio:16/9;position:relative;overflow:hidden">
-          <div class="grayhover" style="position:absolute;inset:0"><img src="assets/thumbs/suns-partnership.jpg" alt="Gold Coast SUNS partnership content" style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- 05 -->
+    <article class="workcard editrow reveal">
+      <div class="em">
+        <div class="workmedia" data-video="2U-MWo9E7KI">
+          <div class="pxwrap"><img src="assets/thumbs/suns-partnership.jpg" alt="Gold Coast SUNS partnership content"></div>
           <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">LED + DIGITAL</span>
+          <span class="badge">LED + DIGITAL</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">05 · SPORT PARTNERSHIP</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">GOLD COAST SUNS</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Gold Coast SUNS · AFL · 2025<br>Motion / Editor</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">AFL partnership content with the Gold Coast SUNS: LED stadium signage animation and digital assets built for match-day scale.</p>
-        <a href="https://www.youtube.com/watch?v=2U-MWo9E7KI" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
-      </article>
+      </div>
+      <div class="et">
+        <div class="kicker">05 · SPORT PARTNERSHIP</div>
+        <h3>GOLD COAST SUNS</h3>
+        <div class="meta">Gold Coast SUNS · AFL · 2025 · Motion / Editor</div>
+        <p class="desc">AFL partnership content with the Gold Coast SUNS: LED stadium signage animation and digital assets built for match-day scale.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=2U-MWo9E7KI" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
+      </div>
+    </article>
 
-      <!-- 07 -->
-      <article class="workcard" style="width:min(58vw,900px);flex:none">
-        <div class="workmedia" data-video="QxHgJc3cPGg" style="aspect-ratio:16/9;position:relative;overflow:hidden">
-          <div class="grayhover" style="position:absolute;inset:0"><img src="https://img.youtube.com/vi/QxHgJc3cPGg/maxresdefault.jpg" alt="Accessible New Zealand with Sophie Morgan" style="width:100%;height:100%;object-fit:cover"></div>
+    <!-- 06 -->
+    <article class="workcard editrow rev reveal">
+      <div class="em">
+        <div class="workmedia" data-video="QxHgJc3cPGg">
+          <div class="pxwrap"><img src="https://img.youtube.com/vi/QxHgJc3cPGg/maxresdefault.jpg" alt="Accessible New Zealand with Sophie Morgan"></div>
           <div class="playoverlay"><span class="ring"><span class="tri"></span></span></div>
-          <span style="position:absolute;top:16px;right:16px;pointer-events:none;z-index:2;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;padding:5px 10px;background:rgba(11,11,12,0.65);backdrop-filter:blur(4px)">FEAT. SOPHIE MORGAN</span>
+          <span class="badge">FEAT. SOPHIE MORGAN</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-top:20px">
-          <div style="min-width:0">
-            <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent);margin-bottom:10px">06 · CREATOR-LED TRAVEL FILM</div>
-            <h3 style="margin:0;font-family:Anton,sans-serif;font-size:clamp(28px,2.6vw,40px);line-height:1;font-weight:400">ACCESSIBLE NEW ZEALAND</h3>
-          </div>
-          <div style="text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.06em;line-height:1.7;color:rgba(234,231,226,0.6)">Ahipara × Tourism New Zealand<br>Director / DP / Editor</div>
-        </div>
-        <p style="margin:14px 0 18px;font-size:14px;line-height:1.6;color:rgba(234,231,226,0.6);max-width:64ch">Creator-led storytelling built around presenter and advocate Sophie Morgan and her global social audience: an accessible-travel film across Aotearoa New Zealand, made with Ahipara in partnership with Tourism New Zealand.</p>
-        <a href="https://www.youtube.com/watch?v=QxHgJc3cPGg" target="_blank" rel="noopener" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;border-bottom:1px solid rgba(234,231,226,0.4);padding-bottom:5px">WATCH ON YOUTUBE ↗</a>
-      </article>
+      </div>
+      <div class="et">
+        <div class="kicker">06 · CREATOR-LED TRAVEL FILM</div>
+        <h3>ACCESSIBLE NEW ZEALAND</h3>
+        <div class="meta">Ahipara × Tourism New Zealand · Director / DP / Editor</div>
+        <p class="desc">Creator-led storytelling built around presenter and advocate Sophie Morgan and her global social audience: an accessible-travel film across Aotearoa New Zealand, made with Ahipara in partnership with Tourism New Zealand.</p>
+        <a class="watch" href="https://www.youtube.com/watch?v=QxHgJc3cPGg" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
+      </div>
+    </article>
 
-      <a href="#contact" style="flex:none;width:320px;align-self:stretch;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;border:1px solid rgba(234,231,226,0.2)">
-        <span style="font-family:Anton,sans-serif;font-size:32px">MORE ON REQUEST</span>
-        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--accent)">GET IN TOUCH →</span>
-      </a>
+    <div class="reveal" style="border-top:1px solid rgba(234,231,226,0.14);padding-top:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <span style="font-family:Anton,sans-serif;font-size:clamp(28px,3.4vw,46px);line-height:1">MORE ON REQUEST</span>
+      <a href="#contact" style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:5px">GET IN TOUCH →</a>
     </div>
   </div>
-</div>
+</section>
 
 <!-- short-form: HIDDEN STUB. To activate: drop 9:16 clips into assets/shortform/ as reel-01.mp4 etc.,
      update the sources below, and delete the hidden + display:none attributes from this section. -->
@@ -636,13 +651,15 @@
 
   /* ---- reveal on scroll ---- */
   var reveals = document.querySelectorAll(".reveal");
+  var revealPending = [];
   if ("IntersectionObserver" in window && !reduceMotion) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
       });
-    }, {threshold:0.15, rootMargin:"0px 0px -8% 0px"});
+    }, {threshold:0.12, rootMargin:"0px 0px -8% 0px"});
     reveals.forEach(function(el){ io.observe(el); });
+    revealPending = Array.prototype.slice.call(reveals);   /* scroll-based safety net (see frame) */
   } else {
     reveals.forEach(function(el){ el.classList.add("in"); });
   }
@@ -695,10 +712,9 @@
     });
   });
 
-  /* ---- scroll-driven: progress bar + filmstrip ---- */
+  /* ---- scroll-driven: progress bar + editorial image parallax ---- */
   var bar = document.getElementById("progressBar");
-  var strip = document.getElementById("workStrip");
-  var section = document.getElementById("workScroll");
+  var pxWraps = [].slice.call(document.querySelectorAll(".editrow .pxwrap"));
   var ticking = false;
 
   function frame(){
@@ -708,14 +724,26 @@
     var y = window.pageYOffset || doc.scrollTop;
     if (bar) bar.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
 
-    if (strip && section){
-      var rect = section.getBoundingClientRect();
-      var total = section.offsetHeight - window.innerHeight;
-      var progressed = Math.min(Math.max(-rect.top, 0), total);
-      var frac = total > 0 ? progressed / total : 0;
-      var end = -(strip.scrollWidth - window.innerWidth + 88);
-      if (end > 0) end = 0;
-      strip.style.transform = "translateX(" + (end * frac) + "px)";
+    if (!reduceMotion){
+      var vh = window.innerHeight;
+      for (var i = 0; i < pxWraps.length; i++){
+        var m = pxWraps[i].parentElement;                  /* .workmedia */
+        var r = m.getBoundingClientRect();
+        if (r.bottom < -60 || r.top > vh + 60) continue;   /* skip offscreen */
+        var c = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);
+        c = c < -1 ? -1 : c > 1 ? 1 : c;
+        pxWraps[i].style.transform = "translateY(" + (c * -6).toFixed(2) + "%)";
+      }
+    }
+    if (revealPending.length){                 /* safety net: reveal in-view items even if IO misses */
+      var vr = window.innerHeight * 0.9;
+      for (var k = revealPending.length - 1; k >= 0; k--){
+        var re = revealPending[k];
+        if (re.classList.contains("in") || re.getBoundingClientRect().top < vr){
+          re.classList.add("in");
+          revealPending.splice(k, 1);
+        }
+      }
     }
     updateSceneline(y, max);
   }
