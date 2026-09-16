@@ -135,6 +135,19 @@ p{margin:0}
 .js #hero h1 span:nth-child(2) i{animation-delay:.11s}
 @keyframes rise{to{transform:translateY(0)}}
 
+/* TEMPORARY hero strip — a placeholder band under the name until the on-set photo lands.
+   Height is in svh so the hero always stays one screen tall. */
+.hero-strip{
+  position:relative;z-index:2;margin:clamp(18px,3vh,38px) 0 0;
+  height:clamp(100px,24svh,290px);overflow:hidden;background:var(--bone-2);
+  /* stop short of the hero portrait instead of running underneath it */
+  max-width:calc(100vw - min(42vw,720px) - var(--pad) - clamp(20px,3vw,60px));
+}
+.hero-strip img{width:100%;height:100%;object-fit:cover;object-position:50% 80%;
+  filter:saturate(.92) contrast(1.02)}
+.js .hero-strip{clip-path:inset(0 0 100% 0);animation:wipeUp 1.3s .5s var(--ease) forwards}
+.js .hero-strip img{transform:scale(1.08);animation:settle 2.2s .5s var(--ease) forwards}
+
 .hero-foot{
   position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
   margin-top:clamp(26px,4vh,52px);max-width:min(66vw,1180px);
@@ -154,6 +167,13 @@ p{margin:0}
   100%{transform:scaleY(0);transform-origin:bottom}
 }
 
+/* short, wide windows: the name is sized by width but the hero's budget is height,
+   so scale both back rather than push the meta line below the fold. */
+@media (min-width:861px) and (max-height:760px){
+  #hero h1{font-size:clamp(2.6rem,10vw,7rem)}
+  .hero-strip{height:clamp(90px,20svh,170px)}
+}
+
 @media (max-width:860px){
   #hero{min-height:96svh}
   #hero h1{font-size:clamp(3.4rem,17vw,7rem)}
@@ -162,6 +182,7 @@ p{margin:0}
   .hero-pic::after{content:'';position:absolute;inset:0;
     background:linear-gradient(to bottom,var(--bone) 0%,rgba(242,240,235,0) 40%)}
   .hero-in{max-width:100%}
+  .hero-strip{display:none}
   .hero-foot{margin-bottom:44svh}
   .cue{display:none}
 }
@@ -366,6 +387,11 @@ p{margin:0}
   <div class="hero-pic"><img src="assets/gallery/web/portrait.jpg" alt="Louis Jefferson on location" fetchpriority="high"></div>
   <div class="hero-in">
     <h1><span><i>Louis</i></span><span><i>Jefferson</i></span></h1>
+    <!-- TEMPORARY: placeholder band from the stills. Swap the src for the on-set photo
+         when it arrives, or delete this whole <figure> to go back to name-only. -->
+    <figure class="hero-strip">
+      <img src="assets/gallery/web/gallery-03.jpg" alt="A cruise ship passing beneath the Sydney Harbour Bridge">
+    </figure>
   </div>
   <div class="hero-foot">
     <p class="meta">Videographer &amp; Editor<br>Gold Coast, Australia</p>
