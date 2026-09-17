@@ -221,6 +221,30 @@ p{margin:0}
 .film .shot:hover img{filter:saturate(1.03) contrast(1.03)}
 .film .shot:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
+/* Layered cover: photo, then the title, then a cutout of the ship on top, so the mast and
+   radomes pass in front of the letters. Everything lives in the photo's own 3:2 space
+   (.layers), so the three layers stay registered at any crop. Sizes are in cqw of the shot. */
+.film .shot.layered{container-type:inline-size}
+.layers{
+  position:absolute;left:0;top:50%;width:100%;aspect-ratio:3/2;translate:0 -50%;
+  transition:scale 1.6s var(--ease);
+}
+.film .shot.layered .layers img{position:absolute;inset:0;top:0;width:100%;height:100%;object-fit:cover}
+.l-title{
+  position:absolute;left:0;right:0;top:22.5%;margin:0;text-align:center;pointer-events:none;
+  font-family:var(--serif);font-weight:300;font-size:14.4cqw;line-height:1;letter-spacing:-.05em;
+  color:#f5f2ec;font-variation-settings:'opsz' 72;
+}
+.l-title span{
+  display:inline-block;
+  translate:calc(var(--mx,0) * 1.3cqw) calc(var(--p,0) * -.8cqw);
+  transition:translate .9s var(--ease);
+}
+.l-vig{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 95% at 50% 42%,rgba(8,14,26,0) 58%,rgba(8,14,26,.26) 100%);
+}
+
 .film figcaption{
   display:flex;justify-content:space-between;align-items:baseline;gap:clamp(16px,3vw,50px);
   padding-top:clamp(14px,1.9vh,24px);flex-wrap:wrap;
@@ -348,6 +372,17 @@ p{margin:0}
   transition:clip-path 1.25s var(--ease),transform 1.9s var(--ease);
 }
 .js .rvp.in img,.js .rvp.in video{clip-path:inset(0 0 0 0);transform:scale(1)}
+/* layered cover reveals as one stack, or its title and photo would drift apart mid-wipe */
+.js .rvp.layered .layers img{clip-path:none;transform:none}
+.js .rvp.layered .layers{
+  clip-path:inset(0 0 100% 0);scale:1.07;
+  transition:clip-path 1.25s var(--ease),scale 1.9s var(--ease);
+}
+.js .rvp.layered.in .layers{clip-path:inset(0 0 0 0);scale:1}
+.js .rvp.layered.in:hover .layers{scale:1.018}
+.js .rvp.layered .l-title{opacity:0;transform:translateY(2.4cqw);
+  transition:opacity 1.3s .5s var(--ease),transform 1.6s .5s var(--ease)}
+.js .rvp.layered.in .l-title{opacity:1;transform:none}
 .js [data-d="1"]{transition-delay:.09s}
 .js [data-d="2"]{transition-delay:.18s}
 .js [data-d="3"]{transition-delay:.27s}
@@ -357,6 +392,9 @@ p{margin:0}
     transition-duration:.01ms!important}
   .js .rv{opacity:1;transform:none}
   .js .rvp img,.js .rvp video{clip-path:none;transform:none}
+  .js .rvp.layered .layers{clip-path:none;scale:1}
+  .js .rvp.layered .l-title{opacity:1;transform:none}
+  .l-title span{translate:none}
   #cur{display:none}
 }
 </style>
@@ -443,8 +481,18 @@ p{margin:0}
   <div class="head"><p class="label rv">Selected Work</p></div>
 
   <figure class="film bleed">
-    <div class="shot rvp" data-video="uLAG5cc4Fls" data-title="Explorations by Norwegian" role="button" tabindex="0" aria-label="Play Explorations by Norwegian">
-      <img src="https://img.youtube.com/vi/uLAG5cc4Fls/maxresdefault.jpg" alt="Explorations by Norwegian">
+    <div class="shot rvp layered" data-video="uLAG5cc4Fls" data-title="Explorations by Norwegian" role="button" tabindex="0" aria-label="Play Explorations by Norwegian">
+      <div class="layers">
+        <img src="assets/thumbs/explorations/deck-2400.webp"
+             srcset="assets/thumbs/explorations/deck-1400.webp 1400w, assets/thumbs/explorations/deck-2400.webp 2400w"
+             sizes="(min-width:1680px) 1528px, 92vw"
+             alt="The pool deck of Explorations by Norwegian at blue hour">
+        <p class="l-title" aria-hidden="true"><span>Explorations</span></p>
+        <img src="assets/thumbs/explorations/deck-fg-2400.webp"
+             srcset="assets/thumbs/explorations/deck-fg-1400.webp 1400w, assets/thumbs/explorations/deck-fg-2400.webp 2400w"
+             sizes="(min-width:1680px) 1528px, 92vw" alt="" aria-hidden="true">
+        <div class="l-vig"></div>
+      </div>
     </div>
     <figcaption>
       <h2 class="rv">Explorations by <em>Norwegian</em></h2>
@@ -523,15 +571,19 @@ p{margin:0}
 <section id="stills" class="pad hold">
   <div class="head tight"><p class="label rv">Stills</p></div>
   <div class="mosaic">
+    <button class="rvp" data-img="assets/gallery/web/gallery-13.jpg"><img src="assets/gallery/web/gallery-13.jpg" alt="Guests dancing on deck, Explorations by Norwegian" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-01.jpg"><img src="assets/gallery/web/gallery-01.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-02.jpg"><img src="assets/gallery/web/gallery-02.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-03.jpg"><img src="assets/gallery/web/gallery-03.jpg" alt="Still" loading="lazy"></button>
+    <button class="rvp" data-img="assets/gallery/web/gallery-14.jpg"><img src="assets/gallery/web/gallery-14.jpg" alt="Regatta alongside the dock at dusk" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-04.jpg"><img src="assets/gallery/web/gallery-04.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-05.jpg"><img src="assets/gallery/web/gallery-05.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-06.jpg"><img src="assets/gallery/web/gallery-06.jpg" alt="Still" loading="lazy"></button>
+    <button class="rvp" data-img="assets/gallery/web/gallery-15.jpg"><img src="assets/gallery/web/gallery-15.jpg" alt="A guest waving his hat from the gangway" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-07.jpg"><img src="assets/gallery/web/gallery-07.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-08.jpg"><img src="assets/gallery/web/gallery-08.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-09.jpg"><img src="assets/gallery/web/gallery-09.jpg" alt="Still" loading="lazy"></button>
+    <button class="rvp" data-img="assets/gallery/web/gallery-16.jpg"><img src="assets/gallery/web/gallery-16.jpg" alt="The pool deck at sail-away" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-10.jpg"><img src="assets/gallery/web/gallery-10.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-11.jpg"><img src="assets/gallery/web/gallery-11.jpg" alt="Still" loading="lazy"></button>
     <button class="rvp" data-img="assets/gallery/web/gallery-12.jpg"><img src="assets/gallery/web/gallery-12.jpg" alt="Still" loading="lazy"></button>
@@ -623,6 +675,7 @@ p{margin:0}
         if(r.bottom < -200 || r.top > vh + 200) continue;
         var p = (r.top + r.height / 2 - vh / 2) / vh;   /* -1 .. 1 */
         pics[i].firstElementChild.style.transform = 'translateY(' + (p * 1.7).toFixed(2) + '%)';
+        pics[i].style.setProperty('--p', p.toFixed(3));
       }
     }
 
@@ -681,6 +734,17 @@ p{margin:0}
       kick();
     });
     addEventListener('blur', function(){ want = 0; cur.classList.remove('on'); kick(); });
+  }
+
+  /* layered cover: the title slides behind the mast as the pointer moves */
+  if(FINE && !RM){
+    [].slice.call(document.querySelectorAll('.shot.layered')).forEach(function(s){
+      s.addEventListener('pointermove', function(e){
+        var r = s.getBoundingClientRect();
+        s.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+      }, {passive:true});
+      s.addEventListener('pointerleave', function(){ s.style.setProperty('--mx', '0'); });
+    });
   }
 
   /* modal */

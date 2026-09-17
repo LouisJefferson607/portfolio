@@ -7,3 +7,6 @@ assets/gallery/*.jpg
 *.log
 .DS_Store
 Thumbs.db
+
+# Raw uploads to process (not deployed)
+incoming/
